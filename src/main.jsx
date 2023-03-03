@@ -5,6 +5,7 @@ import './index.css'
 import "@fontsource/inter";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Example from './pages/Example';
+import Citas from './pages/Citas';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,8 @@ const router = createBrowserRouter([
     element: <Example />
   },
   {
-    // path:"",
-    // element: < />
+    path:"citas",
+    element: <Citas />
   }
   /*
   {
