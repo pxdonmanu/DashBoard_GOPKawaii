@@ -39,12 +39,6 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* <div className="conteinerBody flex items-center w-3/4 h-full">
-                <div className='w-full h-6/7 mr-1/7 bg-gray-700'>
-                    <div className="txt1 h-1/7 flex items-center justify-center bg-orange-300 text-green text-3xl font-semibold">Back Office</div>
-                </div>
-            </div> */}
-
         </div>
     )
 }
