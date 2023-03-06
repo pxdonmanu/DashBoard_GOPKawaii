@@ -1,11 +1,11 @@
 import React from 'react'
-import { BiCalendarAlt, BiSitemap, BiMoneyWithdraw } from 'react-icons/bi'
+import { BiCalendarAlt, BiSitemap, BiMoneyWithdraw, BiFileBlank } from 'react-icons/bi'
 // import Link from 'react-router-dom'
 
 const Navbar = () => {
     return (
         <div className='flex h-screen w-[15%]' >
-            <div className='w-full ml-1/7 h-full flex items-center'>
+            <div className='w-full ml-1/6 h-full flex items-center'>
                 <div className="bg-green h-6/7 w-full rounded-1/7">
 
                     <div className="txt1 w-full h-1/5 flex items-center justify-center text-white text-4xl font-semibold">
@@ -26,7 +26,7 @@ const Navbar = () => {
 
                     <div className="txt5 w-full h-1/6 flex items-center justify-center text-2xl text-white 
                     text-left">
-                        <p className='m-1/6'>Archivos</p>
+                        <BiFileBlank /><p className='m-1/6'>Archivos</p>
                     </div>
                 </div>
             </div>
