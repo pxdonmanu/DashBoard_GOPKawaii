@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import Navbar from '../../components/navbar'
 import Chart from 'react-apexcharts'
-
+import Switch from '../../components/switch'
+import '../../index.css'
 const DatesDash = () => {
-
+    const [Mode, setMode]= useState(true);
     //Gráfica de citas por día en el mes
     const [series, setSeries]= useState([{
         name: 'Dia',
@@ -152,9 +153,11 @@ const DatesDash = () => {
     })
 
     return (
-        <div className='w-screen h-screen flex'>
+        
+        <>
+        {Mode ? (
+            <div className='w-screen h-screen flex'>
             <Navbar/>
-
             <div className="flex items-center w-[85%] h-full">
 
                     <div className='w-full h-6/7'>
@@ -162,11 +165,10 @@ const DatesDash = () => {
                         <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
                             Citas
                         </div>
-
-                        <div className="switch_conteiner h-[12%]">
-                            <div className='AQUIVA_TU_PERRO_SWITCH w-full'>Switch</div>
-                        </div>
-                        
+                        <Switch
+                        Mode={'leftswitch'}
+                        Click={Mode? setMode(false) : setMode(true)}
+                        />
                         <div className="graphs bg-neutral-500 overflow-y-scroll flex w-[100%] h-[73%]">
 
                             <div className="chart1 w-[40%] ml-[5%] mt-[6.5%] h-[67%] bg-[#D9D9D9] rounded-1/7">
@@ -178,7 +180,6 @@ const DatesDash = () => {
                                     />
                                 </div>
                             </div>
-
                             <div className="chart2 chart1 w-[40%] ml-[10%] mt-[6.5%] h-[67%] bg-[#D9D9D9] rounded-1/7">
                                 <div className='mt-[2%] h-[90%]'>
                                     <Chart 
@@ -188,22 +189,63 @@ const DatesDash = () => {
                                     />
                                 </div>
                             </div>
-
-                            
                         </div>
-
                         {/* <div className="conteiner4 flex flex-row justify-around bg-slate-900 w-10/12 h-2/5 ">
                             <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales usuarios</div>
                             <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales de animales</div>
                             <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales en el día</div>
                             <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Promedio de citas en el mes</div>
                         </div> */}
-
                     </div>
-                    
                 </div>
-                
         </div>
+        ):(
+        <div className='w-screen h-screen flex'>    
+            <Navbar/>
+            <div className="flex items-center w-[85%] h-full">
+                    <div className='w-full h-6/7'>
+                        <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
+                            Citas datos
+                        </div>
+                        <div className="switch_conteiner h-[10%] w-full mb-[2%]">
+                            <div className='w-[15%] h-[100%] ml-[5%] bg-[#6ED4A5] p-[.5%] rounded-[3vw] items-center content-center'>
+                                <div className='h-full w-full bg-white rounded-[3vw] p-[5%] '> 
+                                    <div className="h-[6vh] w-[3.5vw] bg-[#6ED4A5] rounded-[50%] float-left"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="graphs bg-neutral-500 overflow-y-scroll flex w-[100%] h-[73%]">
+                            <div className="chart1 w-[40%] ml-[5%] mt-[6.5%] h-[67%] bg-[#D9D9D9] rounded-1/7">
+                                <div className=' mt-[2%] h-[90%]'>
+                                    <Chart 
+                                        series={series} 
+                                        options={options} 
+                                        type='area'
+                                    />
+                                </div>
+                            </div>
+                            <div className="chart2 chart1 w-[40%] ml-[10%] mt-[6.5%] h-[67%] bg-[#D9D9D9] rounded-1/7">
+                                <div className='mt-[2%] h-[90%]'>
+                                    <Chart 
+                                        series={series2}
+                                        options={options2}
+                                        type='bar'
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        {/* <div className="conteiner4 flex flex-row justify-around bg-slate-900 w-10/12 h-2/5 ">
+                            <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales usuarios</div>
+                            <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales de animales</div>
+                            <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales en el día</div>
+                            <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Promedio de citas en el mes</div>
+                        </div> */}
+                    </div>
+                </div>  
+        </div>
+        )}
+        </>
+        
     )
 }
 

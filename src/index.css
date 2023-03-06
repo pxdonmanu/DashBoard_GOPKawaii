@@ -6,3 +6,9 @@
 *{
     font-family: "Inter";
 }
+.leftswitch{
+    float: left;
+}
+.rightswitch{
+    float: right;
+}
