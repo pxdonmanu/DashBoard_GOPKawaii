@@ -1,35 +1,14 @@
+import "@fontsource/inter";
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import {App} from './navigation/MainAppNavigator'
 import './index.css'
-import "@fontsource/inter";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Example from './pages/Example';
-import Citas from './pages/Citas';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />
-  },
-  {
-    path: "example",
-    element: <Example />
-  },
-  {
-    path:"citas",
-    element: <Citas />
-  }
-  /*
-  {
-    path: '*',
-    element: error 404,
-  }, // este es para la pagina 404
-   */
-])
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 )

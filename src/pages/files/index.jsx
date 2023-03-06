@@ -1,15 +1,16 @@
 import React from 'react'
 import Navbar from '../../components/navbar'
 
-const BackofficeDash = () => {
+const FilesDash = () => {
     return (
-        <div className="h-screen w-screen flex">
+        
+    <div className="h-screen w-screen flex">
         <Navbar/>
         <div className='flex items-center w-[85%] h-full bg-red-500'>
-        Backoffice
+        Archivos
         </div>
     </div>
     )
 }
 
-export default BackofficeDash
+export default FilesDash

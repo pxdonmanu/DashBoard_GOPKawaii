@@ -4,9 +4,8 @@ import { BiCalendarAlt, BiSitemap, BiMoneyWithdraw } from 'react-icons/bi'
 
 const Navbar = () => {
     return (
-        <div className='flex h-screen w-screen'>
-
-            <div className='w-1/7 ml-1/7 h-full flex items-center'>
+        <div className='flex h-screen w-[15%]'>
+            <div className='w-full ml-1/7 h-full flex items-center'>
                 <div className="bg-green h-6/7 w-full rounded-1/7">
 
                     <div className="txt1 w-full h-1/5 flex items-center justify-center text-white text-4xl font-semibold">
@@ -29,31 +28,8 @@ const Navbar = () => {
                     text-left">
                         <p className='m-1/6'>Archivos</p>
                     </div>
-
                 </div>
             </div>
-
-            <div className="conteinerBody flex items-center w-3/4 h-full">
-
-                <div className='w-full h-6/7 mr-1/7 bg-gray-700'>
-
-                    <div className="txt1 h-1/7 flex items-center justify-center bg-orange-300 text-green text-3xl font-semibold">Citas</div>
-
-                    <div className="conteiner4 flex flex-row justify-around bg-slate-900 w-10/12 h-2/5 ">
-                        <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales usuarios</div>
-                        <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales de animales</div>
-                        <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales en el día</div>
-                        <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Promedio de citas en el mes</div>
-                    </div>
-
-                    <div className="graph1 flex">
-                        <div>Hola</div>
-                    </div>
-
-                </div>
-
-            </div>
-
         </div>
     )
 }
