@@ -7,8 +7,8 @@
     font-family: "Inter";
 }
 .leftswitch{
-    float: left;
+    margin-left: 0vw 
 }
 .rightswitch{
-    float: right;
+    margin-left: 8.5vw 
 }
