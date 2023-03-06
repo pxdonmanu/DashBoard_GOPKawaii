@@ -114,7 +114,6 @@ const DatesDash = () => {
         },
         stroke: {
             width: 1,
-            colors: ['#fff']
         },
         title: {
             text: 'Citas totales por especie en el mes'
@@ -149,8 +148,97 @@ const DatesDash = () => {
             position: 'top',
             horizontalAlign: 'left',
             offsetX: 40
+        },
+    })
+
+    //Gráfica Cantidad de mascotas por usuarios
+
+    const [series3, setSeries3]= useState([{
+        name: 'Número de usuarios',
+        data: [21, 22, 10, 28, 16, 21, 13, 30]
+    }])
+
+    const [options3, setOptions3] = useState({
+        chart: {
+            fontFamily: 'Inter',
+            type: 'bar',
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 6,
+                columnWidth: '45%',
+                distributed: true,
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        legend: {
+            show: false
+        },
+        xaxis: {
+            categories: [1,2,3,4,5,6,7,8],
+            labels: {
+                style: {
+                    fontSize: '12px'
+                }
+            },
+            title: {
+                text: "Número de mascotas",
+            },
+        },
+        yaxis: {
+            title: {
+                text: 'Usuarios'
+            },
+        },
+        title: {
+            text: 'Número de mascotas por usuario',
+        },
+    })
+
+    //Gráfica de citas por veterinaria
+
+    const series4=[421, 772, 523, 281, 652]
+
+    const [options4, setOptions4] = useState({
+        chart: {
+            type: 'polarArea'
+        },
+        labels: ['Veterinaria 1', 'Veterinaria 2', 'Veterinaria 3', 'Veterinaria 4', 'Veterinaria 5'],
+        fill: {
+            opacity: 1
+        },
+        stroke: {
+            width: 1,
+            colors: undefined
+        },
+        yaxis: {
+            show: false
+        },
+        legend: {
+            position: 'bottom'
+        },
+        plotOptions: {
+            polarArea: {
+            rings: {
+                strokeWidth: 0
+            },
+            spokes: {
+                strokeWidth: 0
+            },
+            }
+        },
+        theme: {
+            monochrome: {
+            enabled: true,
+            shadeTo: 'light',
+            shadeIntensity: 0.6
+            }
         }
     })
+
+    //Gráfica 
 
     return (
         
@@ -165,21 +253,45 @@ const DatesDash = () => {
                         <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
                             Citas
                         </div>
+<<<<<<< HEAD
                         <Switch
                         Mode={'leftswitch'}
                         Click={Mode? setMode(false) : setMode(true)}
                         />
                         <div className="graphs bg-neutral-500 overflow-y-scroll flex w-[100%] h-[73%]">
+=======
 
-                            <div className="chart1 w-[40%] ml-[5%] mt-[6.5%] h-[67%] bg-[#D9D9D9] rounded-1/7">
-                                <div className=' mt-[2%] h-[90%]'>
-                                    <Chart 
-                                        series={series} 
-                                        options={options} 
-                                        type='area'
-                                    />
+                        <div className="switch_conteiner h-[12%]">
+                            <div className='AQUIVA_TU_PERRO_SWITCH w-full'>Switch</div>
+                        </div>
+                        
+                        <div className="graphs overflow-y-scroll w-[100%] h-[73%]">
+>>>>>>> 14244e893b5c7a3f7d68f1779869df732fc97fee
+
+                            <div className=' flex w-[95%] h-[73%] justify-around mt-[5.5%] ml-[2.3%] '>
+
+                                <div className="chart1 w-[46%] bg-[#D9D9D9] rounded-1/7">
+                                    <div className='mt-[2%]'>
+                                        <Chart 
+                                            series={series} 
+                                            options={options} 
+                                            type='area'
+                                        />
+                                    </div>
                                 </div>
+
+                                <div className="chart2 w-[46%] bg-[#D9D9D9] rounded-1/7">
+                                    <div className='mt-[2%]'>
+                                        <Chart 
+                                            series={series2}
+                                            options={options2}
+                                            type='bar'
+                                        />
+                                    </div>
+                                </div>
+
                             </div>
+<<<<<<< HEAD
                             <div className="chart2 chart1 w-[40%] ml-[10%] mt-[6.5%] h-[67%] bg-[#D9D9D9] rounded-1/7">
                                 <div className='mt-[2%] h-[90%]'>
                                     <Chart 
@@ -187,9 +299,55 @@ const DatesDash = () => {
                                         options={options2}
                                         type='bar'
                                     />
+=======
+
+                            <div className=' w-full h-[122%] flex items-center justify-center'>
+
+                                <div className='chart3 w-[55%] bg-[#D9D9D9] rounded-1/7'>
+                                    <div className='mt-[2%]'>
+                                        <Chart
+                                            series={series3}
+                                            options={options3}
+                                            type='bar'
+                                        />
+                                    </div>
+>>>>>>> 14244e893b5c7a3f7d68f1779869df732fc97fee
                                 </div>
+
                             </div>
+
+                            <div className='w-full h-full flex justify-around'>
+
+                                <div className='chart4 w-[40%] h-[85%]  bg-[#D9D9D9] rounded-1/7'>
+                                    <div className='mt-[2%]'>
+                                        <Chart 
+                                            series={series4}
+                                            options={options4}
+                                            type='polarArea'
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className='chart5 w-[40%] h-[85%]  bg-[#D9D9D9] rounded-1/7'>
+                                    <div className='mt-[2%]'>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+<<<<<<< HEAD
                         </div>
+=======
+
+                        </div>
+                            
+
+                            {/* <div>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui obcaecati nisi maxime vel aut nobis, natus similique, provident itaque exercitationem expedita dignissimos harum aliquam iusto perspiciatis placeat laboriosam, numquam necessitatibus? 
+                            </div> */}
+                        
+
+>>>>>>> 14244e893b5c7a3f7d68f1779869df732fc97fee
                         {/* <div className="conteiner4 flex flex-row justify-around bg-slate-900 w-10/12 h-2/5 ">
                             <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales usuarios</div>
                             <div className='bg-red-400 w-1/5 rounded-1/7 h-full'>Citas totales de animales</div>
