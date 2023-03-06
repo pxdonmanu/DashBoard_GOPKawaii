@@ -4,7 +4,7 @@ import { BiCalendarAlt, BiSitemap, BiMoneyWithdraw } from 'react-icons/bi'
 
 const Navbar = () => {
     return (
-        <div className='flex h-screen w-[15%]'>
+        <div className='flex h-screen w-[15%]' >
             <div className='w-full ml-1/7 h-full flex items-center'>
                 <div className="bg-green h-6/7 w-full rounded-1/7">
 
