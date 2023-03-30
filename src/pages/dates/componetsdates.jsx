@@ -6,7 +6,7 @@ export const Graph = ({ Name, Graph, click }) => {
     >
       <div className="w-[35vw] h-[45vh] py-[1vh] px-[.5vw] bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center ">
         <p className="text-[2vh] text-[#6ED4A5] my-[1vh]">{Name}</p>
-        <div className="h-[40vh] w[30vw] ">{Graph}</div>
+        <div className="h-[40vh] w[30vw] flex justify-center">{Graph}</div>
       </div>
     </button>
   );
@@ -133,7 +133,11 @@ export const GraphDays = () => {
       categories: [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
     },
   };
-  return <Chart series={series} options={options} type={"line"} />;
+  return (
+    <div className="w-[32vw]">
+      <Chart series={series} options={options} type={"line"} />
+    </div>
+  );
 };
 //Grafica de citas totales por cada especie
 export const TotalDatesGraph = () => {
@@ -188,7 +192,11 @@ export const TotalDatesGraph = () => {
       },
     },
   };
-  return <Chart series={series} options={options} type={"bar"} />;
+  return (
+    <div className="w-[30vw] ">
+      <Chart series={series} options={options} type={"bar"} />
+    </div>
+  );
 };
 //Grafica de cantidad de citas por usuario
 export const GraphUsuDate = () => {
@@ -228,7 +236,11 @@ export const GraphUsuDate = () => {
       },
     },
   };
-  return <Chart series={series} options={options} type={"bar"} />;
+  return (
+    <div className="w-[30vw]">
+      <Chart series={series} options={options} type={"bar"} />
+    </div>
+  );
 };
 //Grafica de cantidad de animales segun la veterinaria
 export const GraphEspecies = () => {
@@ -253,7 +265,11 @@ export const GraphEspecies = () => {
       },
     ],
   };
-  return <Chart type="pie" series={series} options={options} />;
+  return (
+    <div className="w-[27vw]">
+      <Chart type="pie" series={series} options={options} />
+    </div>
+  );
 };
 //Grafica de edad de mascotas
 export const GraphEdad = () => {
@@ -297,5 +313,9 @@ export const GraphEdad = () => {
     },
   };
 
-  return <Chart options={options} series={series} type="polarArea" />;
+  return (
+    <div className="w-[27vw]">
+      <Chart options={options} series={series} type="polarArea" />
+    </div>
+  );
 };
