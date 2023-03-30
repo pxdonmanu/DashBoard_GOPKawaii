@@ -21,14 +21,14 @@ const DatesDash = () => {
   //Gráfica Cantidad de citas po usuario
 
   //Gráfica
-  const [Graph1, setGraph1] = useState(true);
-  const [Graph2, setGraph2] = useState(true);
-  const [Graph3, setGraph3] = useState(true);
-  const [Graph4, setGraph4] = useState(true);
-  const [Graph5, setGraph5] = useState(true);
-  const [Graph6, setGraph6] = useState(true);
-  const [Graph7, setGraph7] = useState(true);
-  const [Graph8, setGraph8] = useState(true);
+  const [Graph1, setGraph1] = useState(false);
+  const [Graph2, setGraph2] = useState(false);
+  const [Graph3, setGraph3] = useState(false);
+  const [Graph4, setGraph4] = useState(false);
+  const [Graph5, setGraph5] = useState(false);
+  const [Graph6, setGraph6] = useState(false);
+  const [Graph7, setGraph7] = useState(false);
+  const [Graph8, setGraph8] = useState(false);
   return (
     <>
       {Mode ? (
