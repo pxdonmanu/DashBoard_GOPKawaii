@@ -33,8 +33,7 @@ const DatesDash = () => {
     <>
       {Mode ? (
         <div className="w-screen h-screen flex">
-          <Navbar />
-          <div className="flex items-center w-[85%] h-full">
+          <div className="flex items-center w-full h-full">
             <div className="w-full h-6/7">
               <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
                 Citas datos
