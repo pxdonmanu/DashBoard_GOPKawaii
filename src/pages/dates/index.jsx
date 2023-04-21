@@ -51,8 +51,6 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de citas por dia"}
                         Moda={2344}
-                        SubCV={"Coeficiente de citas por dia"}
-                        CV={34}
                         click={() => {
                           setGraph1(false);
                         }}
@@ -68,30 +66,13 @@ const DatesDash = () => {
                     )
                   }
                   Grhap2={
-                    Graph2 ? (
-                      <DataEstadistic
-                        Type={"Citas"}
-                        SubX={"Media de citas por mes"}
-                        Media={129}
-                        SubMd={"Mediana de citas por mes"}
-                        Mediana={1234}
-                        SubMo={"Moda de citas por mes"}
-                        Moda={2344}
-                        SubCV={"Coeficiente de citas por mes"}
-                        CV={34}
-                        click={() => {
-                          setGraph2(false);
-                        }}
-                      />
-                    ) : (
-                      <Graph
-                        Name={"Citas totales"}
-                        Graph={<TotalDatesGraph />}
-                        click={() => {
-                          setGraph2(true);
-                        }}
-                      />
-                    )
+                    <Graph
+                      Name={"Citas totales"}
+                      Graph={<TotalDatesGraph />}
+                      click={() => {
+                        setGraph2(true);
+                      }}
+                    />
                   }
                 />
                 <ContainerTwoGraph
@@ -105,8 +86,6 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de citas por usuario"}
                         Moda={2344}
-                        SubCV={"Coeficiente de citas por usuario"}
-                        CV={34}
                         click={() => {
                           setGraph3(false);
                         }}
@@ -131,8 +110,6 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de animales registrados"}
                         Moda={2344}
-                        SubCV={"Coeficiente de animales registrados"}
-                        CV={34}
                         click={() => {
                           setGraph4(false);
                         }}
@@ -159,8 +136,6 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de años"}
                         Moda={2344}
-                        SubCV={"Coeficiente de años"}
-                        CV={34}
                         click={() => {
                           setGraph5(false);
                         }}
@@ -185,8 +160,6 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de vacunas"}
                         Moda={2344}
-                        SubCV={"Coeficiente de vacunas"}
-                        CV={34}
                         click={() => {
                           setGraph6(false);
                         }}
@@ -213,8 +186,6 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de enfermedades"}
                         Moda={2344}
-                        SubCV={"Coeficiente de enfermedades"}
-                        CV={34}
                         click={() => {
                           setGraph7(false);
                         }}
@@ -239,8 +210,6 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de mascotas"}
                         Moda={2344}
-                        SubCV={"Coeficiente de mascotas"}
-                        CV={34}
                         click={() => {
                           setGraph8(false);
                         }}
