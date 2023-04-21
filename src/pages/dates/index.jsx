@@ -11,6 +11,15 @@ import {
   GraphUsuDate,
   GraphEspecies,
   GraphEdad,
+  GraphMarcasPop,
+  GraphVacunacion,
+  GraphEnfermedades,
+  SwitchButton,
+  Listcategorias,
+  Listaenfermadesporedad,
+  Listavacunasporespecie,
+  Listaenfermedadesporespecie,
+  Listadeproductospormarca,
 } from "./componetsdates";
 const DatesDash = () => {
   //Gráfica de citas por día en el mes
@@ -22,7 +31,6 @@ const DatesDash = () => {
 
   //Gráfica
   const [Graph1, setGraph1] = useState(false);
-  const [Graph2, setGraph2] = useState(false);
   const [Graph3, setGraph3] = useState(false);
   const [Graph4, setGraph4] = useState(false);
   const [Graph5, setGraph5] = useState(false);
@@ -36,7 +44,7 @@ const DatesDash = () => {
           <div className="flex items-center w-full h-full">
             <div className="w-full h-6/7">
               <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
-                Citas datos
+                DashBoard
               </div>
               <div className="overflow-y-scroll w-[100%] h-[85%] pl-[1vw] bg-[#fff] first-letter:|">
                 <ContainerTwoGraph
@@ -85,13 +93,14 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de citas por usuario"}
                         Moda={2344}
+                        children={<Listcategorias />}
                         click={() => {
                           setGraph3(false);
                         }}
                       />
                     ) : (
                       <Graph
-                        Name={"Cantidad de citas por usuario"}
+                        Name={"Productos mas usados en citas"}
                         Graph={<GraphUsuDate />}
                         click={() => {
                           setGraph3(true);
@@ -135,6 +144,7 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de años"}
                         Moda={2344}
+                        children={<Listaenfermadesporedad />}
                         click={() => {
                           setGraph5(false);
                         }}
@@ -159,14 +169,15 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de vacunas"}
                         Moda={2344}
+                        children={<Listavacunasporespecie />}
                         click={() => {
                           setGraph6(false);
                         }}
                       />
                     ) : (
                       <Graph
-                        Name={"Grafica de vacunación"}
-                        Graph={"Grafica de vacunación"}
+                        Name={"Vacunas aplicadas por especie"}
+                        Graph={<GraphVacunacion />}
                         click={() => {
                           setGraph6(true);
                         }}
@@ -185,14 +196,15 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de enfermedades"}
                         Moda={2344}
+                        children={<Listaenfermedadesporespecie />}
                         click={() => {
                           setGraph7(false);
                         }}
                       />
                     ) : (
                       <Graph
-                        Name={"Grafica de enfermedades"}
-                        Graph={"Grafica de enfermedades"}
+                        Name={"Enfermades mas comuenes por especie"}
+                        Graph={<GraphEnfermedades />}
                         click={() => {
                           setGraph7(true);
                         }}
@@ -209,14 +221,15 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de mascotas"}
                         Moda={2344}
+                        children={<Listadeproductospormarca />}
                         click={() => {
                           setGraph8(false);
                         }}
                       />
                     ) : (
                       <Graph
-                        Name={"Grafica de mascotas atendidas"}
-                        Graph={"Grafica de mascotas atendidas"}
+                        Name={"Marcas mas consumidas por especies"}
+                        Graph={<GraphMarcasPop />}
                         click={() => {
                           setGraph8(true);
                         }}
