@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import ROUTES from "../ROUTES/index";
 
 export const App = (props) => {
+  props.id;
   return (
     <Routes>
       <Route index path={ROUTES.Dates} element={<IndexPage />} />

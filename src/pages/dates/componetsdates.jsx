@@ -24,12 +24,11 @@ export const DataEstadistic = ({
   Media,
   Moda,
   Mediana,
-  CV,
   SubX,
   SubMo,
   SubMd,
-  SubCV,
   click,
+  children,
 }) => {
   return (
     <button
@@ -37,64 +36,54 @@ export const DataEstadistic = ({
       className="outline-none m-[none] py-[1vh] bg-[transparent] border-none cursor-pointer"
     >
       <div className="w-[35vw] h-[45vh] py-[1vh] px-[.5vw] bg-[#d9d9d9] rounded-1/7 grid gap-3 grid-cols-2 grid-rows-2">
-        <div className=" rounded-1/7 flex-col flex items-center  relative ">
-          <p className="absolute text-[15vh] opacity-[.2] text-[#6ED4A5] font-black z-0">
-            X̅
-          </p>
-          <div>
-            <h2 className="text-[#6ED4A5] z-10 relative">Media</h2>
-          </div>
-          <p className="text-gray-600 text-[1.5vh] z-10 relative my-[2vh]">
-            {SubX}
-          </p>
-          <h1 className="text-[3vh] font-black text-slate-500 z-10 relative ">
-            {Media + " " + Type}
-          </h1>
-        </div>
-        <div className=" rounded-1/7 flex-col flex items-center  relative ">
-          <p className="absolute text-[15vh] opacity-[.2] text-[#6ED4A5] font-black z-0">
-            Md
-          </p>
-          <div>
-            <h2 className="text-[#6ED4A5] z-10 relative">Mediana</h2>
-          </div>
-          <p className="text-gray-600 text-[1.5vh] z-10 relative my-[2vh]">
-            {SubMd}
-          </p>
-          <h1 className="text-[3vh] font-black text-slate-500 z-10 relative ">
-            {Mediana + " " + Type}
-          </h1>
-        </div>
-        <div className=" rounded-1/7 flex-col flex items-center  relative ">
-          <p className="absolute text-[15vh] opacity-[.2] text-[#6ED4A5] font-black z-0">
-            Mo
-          </p>
-          <div>
-            <h2 className="text-[#6ED4A5] z-10 relative">Moda</h2>
-          </div>
-          <p className="text-gray-600 text-[1.5vh] z-10 relative my-[2vh]">
-            {SubMo}
-          </p>
-          <h1 className="text-[3vh] font-black text-slate-500 z-10 relative ">
-            {Moda + " " + Type}
-          </h1>
-        </div>
-        <div className=" rounded-1/7 flex-col flex items-center  relative ">
-          <p className="absolute text-[15vh] opacity-[.2] text-[#6ED4A5] font-black z-0">
-            CV
-          </p>
-          <div>
-            <h2 className="text-[#6ED4A5] z-10 relative">
-              Coefiente de variación
-            </h2>
-          </div>
-          <p className="text-gray-600 text-[1.5vh] z-10 relative my-[2vh]">
-            {SubCV}
-          </p>
-          <h1 className="text-[3vh] font-black text-slate-500 z-10 relative ">
-            {CV + "%"}
-          </h1>
-        </div>
+        {children ? (
+          children
+        ) : (
+          <>
+            <div className=" rounded-1/7 flex-col flex items-center  relative ">
+              <p className="absolute text-[15vh] opacity-[.2] text-[#6ED4A5] font-black z-0">
+                X̅
+              </p>
+              <div>
+                <h2 className="text-[#6ED4A5] z-10 relative">MediaXD</h2>
+              </div>
+              <p className="text-gray-600 text-[1.5vh] z-10 relative my-[2vh]">
+                {SubX}
+              </p>
+              <h1 className="text-[3vh] font-black text-slate-500 z-10 relative ">
+                {Media + " " + Type}
+              </h1>
+            </div>
+            <div className=" rounded-1/7 flex-col flex items-center  relative ">
+              <p className="absolute text-[15vh] opacity-[.2] text-[#6ED4A5] font-black z-0">
+                Md
+              </p>
+              <div>
+                <h2 className="text-[#6ED4A5] z-10 relative">Mediana</h2>
+              </div>
+              <p className="text-gray-600 text-[1.5vh] z-10 relative my-[2vh]">
+                {SubMd}
+              </p>
+              <h1 className="text-[3vh] font-black text-slate-500 z-10 relative ">
+                {Mediana + " " + Type}
+              </h1>
+            </div>
+            <div className={`rounded-1/7 flex-col flex items-center    `}>
+              <p className="absolute text-[15vh] opacity-[.2] text-[#6ED4A5] font-black z-0">
+                Mo
+              </p>
+              <div>
+                <h2 className="text-[#6ED4A5] z-10 relative">Moda</h2>
+              </div>
+              <p className="text-gray-600 text-[1.5vh] z-10 relative my-[2vh]">
+                {SubMo}
+              </p>
+              <h1 className="text-[3vh] font-black text-slate-500 z-10 relative ">
+                {Moda + " " + Type}
+              </h1>
+            </div>
+          </>
+        )}
       </div>
     </button>
   );
