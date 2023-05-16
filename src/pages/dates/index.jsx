@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../../components/navbar";
 import Chart from "react-apexcharts";
-
+import { RxTriangleDown } from "react-icons/rx";
+import { HiOutlineFilter } from "react-icons/hi";
 import {
   Graph,
   ContainerTwoGraph,
@@ -14,7 +15,7 @@ import {
   GraphMarcasPop,
   GraphVacunacion,
   GraphEnfermedades,
-  SwitchButton,
+  EspecieSelect,
   Listcategorias,
   Listaenfermadesporedad,
   Listavacunasporespecie,
@@ -37,6 +38,8 @@ const DatesDash = () => {
   const [Graph6, setGraph6] = useState(false);
   const [Graph7, setGraph7] = useState(false);
   const [Graph8, setGraph8] = useState(false);
+  const [VetSelect, setVetSelect] = useState(false);
+  const [FilSelect, setFilSelect] = useState(false);
   return (
     <>
       {Mode ? (
@@ -46,7 +49,107 @@ const DatesDash = () => {
               <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
                 DashBoard
               </div>
-              <div className="overflow-y-scroll w-[100%] h-[85%] pl-[1vw] bg-[#fff] first-letter:|">
+              <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
+                <div className="h-[100%] w-[50%] flex items-center relative">
+                  <button
+                    className="flex items-center justify-center border-[.5vh] border-green w-[20vh] h-[7vh] rounded-[1vw] mx-[12vw] outline-none text-[3vh] "
+                    onClick={() => {
+                      VetSelect ? setVetSelect(false) : setVetSelect(true);
+                    }}
+                  >
+                    <p className="text-[#757474] mx-3 text-[2vh]">
+                      Veterinaria 1
+                    </p>
+                    <RxTriangleDown />
+                  </button>
+                  <div
+                    className={
+                      VetSelect
+                        ? "w-[20vh] h-auto mx-[12vw] flex flex-col items-center justify-center absolute top-[11vh]"
+                        : "absolute opacity-0 w-0 h-0"
+                    }
+                  >
+                    <button
+                      className="flex items-center justify-center float-left border-[.5vh] border-green w-full h-[6vh] rounded-[1vw] my-[.5vh] text-[2vh] text-[#757474] bg-white z-50"
+                      onClick={() => {
+                        setVetSelect(false);
+                      }}
+                    >
+                      Veterninaria 1
+                    </button>
+                    <button
+                      className="flex items-center justify-center float-left border-[.5vh] border-green w-full h-[6vh] rounded-[1vw] my-[.5vh] text-[2vh] text-[#757474] bg-white z-50"
+                      onClick={() => {
+                        setVetSelect(false);
+                      }}
+                    >
+                      Veterninaria 2
+                    </button>
+                  </div>
+                </div>
+                <div className="h-[100%] w-[50%] flex items-center relative justify-end">
+                  <button
+                    className="flex items-center justify-center border-[.5vh] border-green w-[18vh] h-[7vh] rounded-[2vw] mx-[12vw] outline-none text-[3vh] text-[#757474]"
+                    onClick={() => {
+                      FilSelect ? setFilSelect(false) : setFilSelect(true);
+                    }}
+                  >
+                    <div className="rounded-[50%] bg-green h-[70%] w-[25%] flex items-center justify-center text-[3vh]">
+                      <HiOutlineFilter />
+                    </div>
+                    <p className="text-[#757474] mx-5 text-[2vh]">Filtrar</p>
+                  </button>
+                  <div
+                    className={
+                      FilSelect
+                        ? "absolute flex flex-col items-center justify-center p-[1vh] top-[12vh] border-[.5vh] border-green rounded-[2vw] mx-[12vw] w-[18vh] h-auto bg-white z-50 z-50"
+                        : " absolute opacity-0 w-0 h-0"
+                    }
+                  >
+                    <button
+                      className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+                      onClick={() => {
+                        setFilSelect(false);
+                      }}
+                    >
+                      Citas
+                    </button>
+                    <button
+                      className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+                      onClick={() => {
+                        setFilSelect(false);
+                      }}
+                    >
+                      Animales
+                    </button>
+                    <button
+                      className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+                      onClick={() => {
+                        setFilSelect(false);
+                      }}
+                    >
+                      Productos
+                    </button>
+                    <button
+                      className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+                      onClick={() => {
+                        setFilSelect(false);
+                      }}
+                    >
+                      Vacunas
+                    </button>
+                    <button
+                      className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+                      onClick={() => {
+                        setFilSelect(false);
+                      }}
+                    >
+                      Edad
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="overflow-y-scroll w-[100%] h-[70%] pl-[1vw] bg-[#fff] first-letter:|">
                 <ContainerTwoGraph
                   Grahp1={
                     Graph1 ? (
@@ -69,6 +172,7 @@ const DatesDash = () => {
                         click={() => {
                           setGraph1(true);
                         }}
+                        data={true}
                       />
                     )
                   }
@@ -79,6 +183,7 @@ const DatesDash = () => {
                       click={() => {
                         setGraph2(true);
                       }}
+                      data={false}
                     />
                   }
                 />
@@ -105,6 +210,7 @@ const DatesDash = () => {
                         click={() => {
                           setGraph3(true);
                         }}
+                        data={false}
                       />
                     )
                   }
@@ -129,6 +235,7 @@ const DatesDash = () => {
                         click={() => {
                           setGraph4(true);
                         }}
+                        data={false}
                       />
                     )
                   }
@@ -156,6 +263,7 @@ const DatesDash = () => {
                         click={() => {
                           setGraph5(true);
                         }}
+                        data={true}
                       />
                     )
                   }
@@ -181,6 +289,7 @@ const DatesDash = () => {
                         click={() => {
                           setGraph6(true);
                         }}
+                        data={true}
                       />
                     )
                   }
@@ -208,6 +317,7 @@ const DatesDash = () => {
                         click={() => {
                           setGraph7(true);
                         }}
+                        data={true}
                       />
                     )
                   }
@@ -233,6 +343,7 @@ const DatesDash = () => {
                         click={() => {
                           setGraph8(true);
                         }}
+                        data={true}
                       />
                     )
                   }

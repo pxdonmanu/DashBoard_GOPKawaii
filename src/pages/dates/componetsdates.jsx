@@ -1,14 +1,89 @@
-export const Graph = ({ Name, Graph, click }) => {
+import { RxTriangleDown } from "react-icons/rx";
+
+export const Graph = ({ Name, Graph, click, data }) => {
   return (
-    <button
-      onClick={click}
-      className="outline-none m-[none] py-[1vh] bg-[transparent] border-none cursor-pointer"
-    >
-      <div className="w-[35vw] h-[45vh] py-[1vh] px-[.5vw] bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center ">
-        <p className="text-[2vh] text-[#6ED4A5] my-[1vh]">{Name}</p>
-        <div className="h-[40vh] w[30vw] flex justify-center">{Graph}</div>
+    <div className="outline-none m-[none] py-[1vh] bg-[transparent] border-none cursor-pointer z-0">
+      <div className="w-[35vw] h-[45vh] py-[1vh] px-[.5vw] bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center items-center">
+        <div className="relative flex items-center justify-center w-full">
+          <p className="text-[2vh] text-[#757474] my-[1vh] ">{Name}</p>
+          {data ? (
+            <button
+              className="bg-green outline-none y-[100%] w-[10vh] left-[55vh] rounded-[1vw] absolute text-white"
+              onClick={click}
+            >
+              Datos
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="h-[40vh] flex justify-center z-0">{Graph}</div>
       </div>
-    </button>
+    </div>
+  );
+};
+export const EspecieSelect = ({}) => {
+  const [Change, SetChange] = useState(false);
+  return (
+    <div className="relative">
+      <button
+        className="border-green rounded-[1vw] h-[5vh] w-[15vh] border-[.5vh] flex items-center justify-center text-[#757474] z-50"
+        onClick={() => {
+          Change ? SetChange(false) : SetChange(true);
+        }}
+      >
+        <p className="text-[#757474] text-[1.8vh] mx-3 ">Especie</p>
+        <RxTriangleDown />
+      </button>
+      <div
+        className={
+          Change
+            ? "absolute flex flex-col items-center justify-center p-[.2vh]  border-[.5vh] border-green rounded-[2vw] top-[5.5vh] w-full h-auto bg-[#d9d9d9] z-50"
+            : "w-0 h-0 opacity-0"
+        }
+      >
+        <button
+          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          onClick={() => {
+            SetChange(false);
+          }}
+        >
+          Perros
+        </button>
+        <button
+          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          onClick={() => {
+            SetChange(false);
+          }}
+        >
+          Gatos
+        </button>
+        <button
+          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          onClick={() => {
+            SetChange(false);
+          }}
+        >
+          Mini Pigs
+        </button>
+        <button
+          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          onClick={() => {
+            SetChange(false);
+          }}
+        >
+          Conejos
+        </button>
+        <button
+          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          onClick={() => {
+            SetChange(false);
+          }}
+        >
+          Hurones
+        </button>
+      </div>
+    </div>
   );
 };
 export const ContainerTwoGraph = ({ Grahp1, Grhap2 }) => {
@@ -388,10 +463,11 @@ export const GraphDays = () => {
       categories: [3, 6, 9, 12, 15, 18, 21, 24, 27, 30],
     },
   };
+
   return (
     <div className="w-[26vw]">
       <div className="flex justify-start items-center">
-        <SwitchPeriodo />
+        <EspecieSelect />
       </div>
       <Chart series={series} options={options} type={"line"} />
     </div>
@@ -574,7 +650,7 @@ export const GraphEdad = () => {
   return (
     <div className="w-[23vw]">
       <div className="flex justify-start items-center">
-        <SwitchButton />
+        <EspecieSelect />
       </div>
       <Chart options={options} series={series} type="polarArea" />
     </div>
@@ -714,7 +790,7 @@ export const GraphMarcasPop = () => {
   return (
     <div className="w-[28vw]">
       <div className="flex justify-start items-center">
-        <SwitchButton />
+        <EspecieSelect />
       </div>
       <Chart series={series} options={options} type={"bar"} />
     </div>
