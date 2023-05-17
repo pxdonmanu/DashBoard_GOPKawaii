@@ -86,11 +86,11 @@ export const EspecieSelect = ({}) => {
     </div>
   );
 };
-export const ContainerTwoGraph = ({ Grahp1, Grhap2 }) => {
+export const ContainerTwoGraph = ({ Grahp1, Grhap2, row }) => {
   return (
     <div className="flex my-[5vh] items-center justify-center ">
-      <div className="mx-[3vw]">{Grahp1}</div>
-      <div className="mx-[3vw]">{Grhap2}</div>
+      <div className="mx-[3vw]">{row[0] ? Grahp1 : null}</div>
+      <div className="mx-[3vw]">{row[1] ? Grhap2 : null}</div>
     </div>
   );
 };

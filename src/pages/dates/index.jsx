@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import Navbar from "../../components/navbar";
 import Chart from "react-apexcharts";
 import { RxTriangleDown } from "react-icons/rx";
@@ -22,6 +22,14 @@ import {
   Listaenfermedadesporespecie,
   Listadeproductospormarca,
 } from "./componetsdates";
+
+const MODES = {
+  Citas: "Citas",
+  Animales: "Animales",
+  Productos: "Productos",
+  Salud: "Salud",
+};
+
 const DatesDash = () => {
   //Gráfica de citas por día en el mes
   const [Mode, setMode] = useState(true);
@@ -29,8 +37,63 @@ const DatesDash = () => {
   //Grafica de citas totales y especie
 
   //Gráfica Cantidad de citas po usuario
+  const [selectedMode, setSelectedMode] = useState();
 
-  //Gráfica
+  // const setTypeFactory = useCallback((type) => {}, []);
+  useEffect(() => {
+    switch (selectedMode) {
+      case MODES.Citas:
+        setRows({
+          row1: [true, true],
+          row2: [false, false],
+          row3: [false, false],
+          row4: [false, false],
+        });
+        break;
+      case MODES.Animales:
+        setRows({
+          row1: [false, false],
+          row2: [false, true],
+          row3: [true, false],
+          row4: [false, false],
+        });
+        break;
+      case MODES.Productos:
+        setRows({
+          row1: [false, false],
+          row2: [true, false],
+          row3: [false, false],
+          row4: [false, true],
+        });
+        break;
+
+      case MODES.Salud:
+        setRows({
+          row1: [false, false],
+          row2: [false, false],
+          row3: [false, true],
+          row4: [true, false],
+        });
+        break;
+
+      case undefined:
+        setRows({
+          row1: [true, true],
+          row2: [true, true],
+          row3: [true, true],
+          row4: [true, true],
+        });
+        break;
+    }
+  }, [selectedMode]);
+
+  const [rows, setRows] = useState({
+    row1: [true, true],
+    row2: [true, true],
+    row3: [true, true],
+    row4: [true, true],
+  });
+
   const [Graph1, setGraph1] = useState(false);
   const [Graph3, setGraph3] = useState(false);
   const [Graph4, setGraph4] = useState(false);
@@ -47,7 +110,7 @@ const DatesDash = () => {
           <div className="flex items-center w-full h-full">
             <div className="w-full h-6/7">
               <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
-                DashBoard
+                DashBoard {}
               </div>
               <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
                 <div className="h-[100%] w-[50%] flex items-center relative">
@@ -92,12 +155,17 @@ const DatesDash = () => {
                     className="flex items-center justify-center border-[.5vh] border-green w-[18vh] h-[7vh] rounded-[2vw] mx-[12vw] outline-none text-[3vh] text-[#757474]"
                     onClick={() => {
                       FilSelect ? setFilSelect(false) : setFilSelect(true);
+                      setSelectedMode(undefined);
                     }}
                   >
                     <div className="rounded-[50%] bg-green h-[70%] w-[25%] flex items-center justify-center text-[3vh]">
                       <HiOutlineFilter />
                     </div>
-                    <p className="text-[#757474] mx-5 text-[2vh]">Filtrar</p>
+                    {selectedMode ? (
+                      selectedMode
+                    ) : (
+                      <p className="text-[#757474] mx-5 text-[2vh]">Filtrar</p>
+                    )}
                   </button>
                   <div
                     className={
@@ -110,6 +178,7 @@ const DatesDash = () => {
                       className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
                       onClick={() => {
                         setFilSelect(false);
+                        setSelectedMode(MODES.Citas);
                       }}
                     >
                       Citas
@@ -118,6 +187,7 @@ const DatesDash = () => {
                       className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
                       onClick={() => {
                         setFilSelect(false);
+                        setSelectedMode(MODES.Animales);
                       }}
                     >
                       Animales
@@ -126,6 +196,7 @@ const DatesDash = () => {
                       className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
                       onClick={() => {
                         setFilSelect(false);
+                        setSelectedMode(MODES.Productos);
                       }}
                     >
                       Productos
@@ -134,23 +205,17 @@ const DatesDash = () => {
                       className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
                       onClick={() => {
                         setFilSelect(false);
+                        setSelectedMode(MODES.Salud);
                       }}
                     >
-                      Vacunas
-                    </button>
-                    <button
-                      className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
-                      onClick={() => {
-                        setFilSelect(false);
-                      }}
-                    >
-                      Edad
+                      Salud
                     </button>
                   </div>
                 </div>
               </div>
               <div className="overflow-y-scroll w-[100%] h-[70%] pl-[1vw] bg-[#fff] first-letter:|">
                 <ContainerTwoGraph
+                  row={rows.row1}
                   Grahp1={
                     Graph1 ? (
                       <DataEstadistic
@@ -188,6 +253,7 @@ const DatesDash = () => {
                   }
                 />
                 <ContainerTwoGraph
+                  row={rows.row2}
                   Grahp1={
                     Graph3 ? (
                       <DataEstadistic
@@ -241,6 +307,7 @@ const DatesDash = () => {
                   }
                 />
                 <ContainerTwoGraph
+                  row={rows.row3}
                   Grahp1={
                     Graph5 ? (
                       <DataEstadistic
@@ -294,7 +361,9 @@ const DatesDash = () => {
                     )
                   }
                 />
+
                 <ContainerTwoGraph
+                  row={rows.row4}
                   Grahp1={
                     Graph7 ? (
                       <DataEstadistic
