@@ -1,10 +1,11 @@
 import React, { useCallback, useState, useEffect } from "react";
-import Navbar from "../../components/navbar";
+import Navbar from "../components/navbar";
 import Chart from "react-apexcharts";
 import { RxTriangleDown } from "react-icons/rx";
 import { HiOutlineFilter } from "react-icons/hi";
 import {
   Graph,
+  ContainerTwoGraph,
   DataEstadistic,
   TotalDatesGraph,
   GraphDays,
@@ -108,10 +109,10 @@ const DatesDash = () => {
         <div className="w-screen h-screen flex">
           <div className="flex items-center w-full h-full">
             <div className="w-full h-6/7">
-              <div className="h-1/14 flex items-center justify-center text-green text-3xl font-semibold">
-                DashBoard
+              <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
+                DashBoard {}
               </div>
-              <div className="h-1/14 my-[1vh] flex items-center justify-center text-green text-3xl font-semibold">
+              <div className="h-1/7 flex items-center justify-center text-green text-3xl font-semibold">
                 <div className="h-[100%] w-[50%] flex items-center relative">
                   <button
                     className="flex items-center justify-center border-[.5vh] border-green w-[20vh] h-[7vh] rounded-[1vw] mx-[12vw] outline-none text-[3vh] "
@@ -170,7 +171,7 @@ const DatesDash = () => {
                     className={
                       FilSelect
                         ? "absolute flex flex-col items-center justify-center p-[1vh] top-[12vh] border-[.5vh] border-green rounded-[2vw] mx-[12vw] w-[18vh] h-auto bg-white z-50 z-50"
-                        : " absolute opacity-0 w-0 h-0 top-0 left-0 right-0 bottom-0"
+                        : " absolute opacity-0 w-0 h-0"
                     }
                   >
                     <button
@@ -212,8 +213,11 @@ const DatesDash = () => {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-2 overflow-y-scroll w-full h-[85%] bg-[#fff] ">
-                    {Graph1 ? (
+              <div className="overflow-y-scroll w-[100%] h-[70%] pl-[1vw] bg-[#fff] first-letter:|">
+                <ContainerTwoGraph
+                  row={rows.row1}
+                  Grahp1={
+                    Graph1 ? (
                       <DataEstadistic
                         Type={"Citas"}
                         SubX={"Media de citas por dia"}
@@ -235,9 +239,9 @@ const DatesDash = () => {
                         }}
                         data={true}
                       />
-                    )}
-                  
-                 
+                    )
+                  }
+                  Grhap2={
                     <Graph
                       Name={"Citas totales"}
                       Graph={<TotalDatesGraph />}
@@ -246,7 +250,11 @@ const DatesDash = () => {
                       }}
                       data={false}
                     />
-                  {
+                  }
+                />
+                <ContainerTwoGraph
+                  row={rows.row2}
+                  Grahp1={
                     Graph3 ? (
                       <DataEstadistic
                         Type={"Citas"}
@@ -272,7 +280,7 @@ const DatesDash = () => {
                       />
                     )
                   }
-                  {
+                  Grhap2={
                     Graph4 ? (
                       <DataEstadistic
                         Type={""}
@@ -297,7 +305,10 @@ const DatesDash = () => {
                       />
                     )
                   }
-{
+                />
+                <ContainerTwoGraph
+                  row={rows.row3}
+                  Grahp1={
                     Graph5 ? (
                       <DataEstadistic
                         Type={"Años"}
@@ -323,7 +334,7 @@ const DatesDash = () => {
                       />
                     )
                   }
-                    {
+                  Grhap2={
                     Graph6 ? (
                       <DataEstadistic
                         Type={"Vacunas"}
@@ -349,7 +360,11 @@ const DatesDash = () => {
                       />
                     )
                   }
-{
+                />
+
+                <ContainerTwoGraph
+                  row={rows.row4}
+                  Grahp1={
                     Graph7 ? (
                       <DataEstadistic
                         Type={"Enfermedades"}
@@ -375,7 +390,7 @@ const DatesDash = () => {
                       />
                     )
                   }
-{
+                  Grhap2={
                     Graph8 ? (
                       <DataEstadistic
                         Type={"Mascotas"}
@@ -401,6 +416,7 @@ const DatesDash = () => {
                       />
                     )
                   }
+                />
               </div>
             </div>
           </div>

@@ -2,8 +2,7 @@ import { RxTriangleDown } from "react-icons/rx";
 
 export const Graph = ({ Name, Graph, click, data }) => {
   return (
-    <div className="outline-none m-[none] py-[1vh] bg-[transparent] border-none cursor-pointer z-0">
-      <div className="w-[35vw] h-[45vh] py-[1vh] px-[.5vw] bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center items-center">
+      <div className="w-[90%] h-[45vh] mx-[5%] my-[2vh] col-span-1 relative bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center items-center">
         <div className="relative flex items-center justify-center w-full">
           <p className="text-[2vh] text-[#757474] my-[1vh] ">{Name}</p>
           {data ? (
@@ -19,7 +18,6 @@ export const Graph = ({ Name, Graph, click, data }) => {
         </div>
         <div className="h-[40vh] flex justify-center z-0">{Graph}</div>
       </div>
-    </div>
   );
 };
 export const EspecieSelect = ({}) => {
@@ -86,14 +84,7 @@ export const EspecieSelect = ({}) => {
     </div>
   );
 };
-export const ContainerTwoGraph = ({ Grahp1, Grhap2, row }) => {
-  return (
-    <div className="flex my-[5vh] items-center justify-center ">
-      <div className="mx-[3vw]">{row[0] ? Grahp1 : null}</div>
-      <div className="mx-[3vw]">{row[1] ? Grhap2 : null}</div>
-    </div>
-  );
-};
+
 export const Listcategorias = ({ cat }) => {
   return (
     <div className="h-full w-full p-1">
