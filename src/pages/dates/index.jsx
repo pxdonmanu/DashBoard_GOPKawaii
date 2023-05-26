@@ -5,21 +5,17 @@ import { RxTriangleDown } from "react-icons/rx";
 import { HiOutlineFilter } from "react-icons/hi";
 import {
   Graph,
+  ListThings,
   DataEstadistic,
   TotalDatesGraph,
   GraphDays,
-  GraphUsuDate,
   GraphEspecies,
+  EspecieSelect,
+  GraphUsuDate,
   GraphEdad,
   GraphMarcasPop,
   GraphVacunacion,
   GraphEnfermedades,
-  EspecieSelect,
-  Listcategorias,
-  Listaenfermadesporedad,
-  Listavacunasporespecie,
-  Listaenfermedadesporespecie,
-  Listadeproductospormarca,
 } from "./componetsdates";
 
 const MODES = {
@@ -256,7 +252,7 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de citas por usuario"}
                         Moda={2344}
-                        children={<Listcategorias />}
+                        children={<ListThings />}
                         click={() => {
                           setGraph3(false);
                         }}
@@ -264,7 +260,7 @@ const DatesDash = () => {
                     ) : (
                       <Graph
                         Name={"Productos mas usados en citas"}
-                        Graph={<GraphUsuDate />}
+                        Graph={<GraphUsuDate/>}
                         click={() => {
                           setGraph3(true);
                         }}
@@ -307,7 +303,7 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de años"}
                         Moda={2344}
-                        children={<Listaenfermadesporedad />}
+                        children={<ListThings />}
                         click={() => {
                           setGraph5(false);
                         }}
@@ -333,7 +329,7 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de vacunas"}
                         Moda={2344}
-                        children={<Listavacunasporespecie />}
+                        children={<ListThings title={"Vacunas aplicadas por especie"}/>}
                         click={() => {
                           setGraph6(false);
                         }}
@@ -359,7 +355,7 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de enfermedades"}
                         Moda={2344}
-                        children={<Listaenfermedadesporespecie />}
+                        children={<ListThings />}
                         click={() => {
                           setGraph7(false);
                         }}
@@ -385,7 +381,7 @@ const DatesDash = () => {
                         Mediana={1234}
                         SubMo={"Moda de mascotas"}
                         Moda={2344}
-                        children={<Listadeproductospormarca />}
+                        children={<ListThings />}
                         click={() => {
                           setGraph8(false);
                         }}

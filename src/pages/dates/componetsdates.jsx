@@ -2,22 +2,22 @@ import { RxTriangleDown } from "react-icons/rx";
 
 export const Graph = ({ Name, Graph, click, data }) => {
   return (
-      <div className="w-[90%] h-[45vh] mx-[5%] my-[2vh] col-span-1 relative bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center items-center">
-        <div className="relative flex items-center justify-center w-full">
-          <p className="text-[2vh] text-[#757474] my-[1vh] ">{Name}</p>
-          {data ? (
-            <button
-              className="bg-green outline-none y-[100%] w-[10vh] left-[55vh] rounded-[1vw] absolute text-white"
-              onClick={click}
-            >
-              Datos
-            </button>
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="h-[40vh] flex justify-center z-0">{Graph}</div>
+    <div className="w-[90%] h-[45vh] mx-[5%] my-[2vh] col-span-1 relative bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center items-center">
+      <div className="relative flex items-center justify-center w-full">
+        <p className="text-[2.5vh] text-[#757474] font-bold my-[1vh] ">{Name}</p>
+        {data ? (
+          <button
+            className="bg-green outline-none y-[100%] w-[10vh] left-[37vw] top-[1vh] rounded-[1vw] absolute text-white"
+            onClick={click}
+          >
+            Datos
+          </button>
+        ) : (
+          ""
+        )}
       </div>
+      <div className="h-[40vh] flex justify-center z-0">{Graph}</div>
+    </div>
   );
 };
 export const EspecieSelect = ({}) => {
@@ -30,7 +30,7 @@ export const EspecieSelect = ({}) => {
           Change ? SetChange(false) : SetChange(true);
         }}
       >
-        <p className="text-[#757474] text-[1.8vh] mx-3 ">Especie</p>
+        <p className="text-[#757474] text-[1.8vh] mx-3 font-bold ">Especie</p>
         <RxTriangleDown />
       </button>
       <div
@@ -41,7 +41,7 @@ export const EspecieSelect = ({}) => {
         }
       >
         <button
-          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          className="text-[#757474] font-bold text-[2vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
           onClick={() => {
             SetChange(false);
           }}
@@ -49,7 +49,7 @@ export const EspecieSelect = ({}) => {
           Perros
         </button>
         <button
-          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          className="text-[#757474] font-bold text-[1.7vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
           onClick={() => {
             SetChange(false);
           }}
@@ -57,7 +57,7 @@ export const EspecieSelect = ({}) => {
           Gatos
         </button>
         <button
-          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          className="text-[#757474] font-bold text-[1.7vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
           onClick={() => {
             SetChange(false);
           }}
@@ -65,7 +65,7 @@ export const EspecieSelect = ({}) => {
           Mini Pigs
         </button>
         <button
-          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          className="text-[#757474] font-bold text-[1.7vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
           onClick={() => {
             SetChange(false);
           }}
@@ -73,7 +73,7 @@ export const EspecieSelect = ({}) => {
           Conejos
         </button>
         <button
-          className="text-[#757474] text-[1.5vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
+          className="text-[#757474] font-bold text-[1.7vh] rounded-[2vw] border-[.5vh] border-green w-[70%] my-[.5vh] p-[.5vh]"
           onClick={() => {
             SetChange(false);
           }}
@@ -85,266 +85,60 @@ export const EspecieSelect = ({}) => {
   );
 };
 
-export const Listcategorias = ({ cat }) => {
+const EXAMPLE = [
+  {
+    sectionTitle: "Alimento",
+    sectionElements: [
+      "Orijen Original-Croquetas para perro",
+      "Trick & Treats YUMPERS",
+    ],
+  },
+  {
+    sectionTitle: "Alimento",
+    sectionElements: [
+      "Orijen Original-Croquetas para perro",
+      "Whiskas Comida para Gatos Croquetas",
+    ],
+  },
+  {
+    sectionTitle: "Alimento",
+    sectionElements: [
+      "Trick & Treats YUMPERS",
+      "Trick & Treats YUMPERS",
+    ],
+  },
+  {
+    sectionTitle: "Alimento",
+    sectionElements: [
+      "Orijen Original-Croquetas para perro",
+      "Orijen Original-Croquetas para perro",
+    ],
+  },
+  {
+    sectionTitle: "Alimento",
+    sectionElements: [
+      "Orijen Original-Croquetas para perro",
+      "Orijen Original-Croquetas para perro",
+    ],
+  },
+];
+export const ListThings = ({ title, data = EXAMPLE }) => {
   return (
     <div className="h-full w-full p-1">
-      <div className="h-[10%] text-[#6ED4A5] text-[2.5vh]">
-        Productos mas usados por categoria
-      </div>
-      <div className="flex h-[50%] w-[100%]">
-        <div className="w-[40%] mx-[5%]">
-          <h2 className="text-[#6ED4A5] text-[2vh] justify-start">Alimento</h2>
-          <ul className="text-[#434343]">
-            <li className="my-[.5vh]">-Orijen Original-Croquetas para perro</li>
-            <li className="my-[.5vh]">-Whiskas Comida para Gatos Croquetas</li>
-            <li className="my-[.5vh]">-Trick & Treats YUMPERS</li>
-          </ul>
-        </div>
-        <div className="w-[40%] mx-[5%]">
-          <h2 className="text-[#6ED4A5] text-[2vh]">Higiene</h2>
-          <ul className="text-[#434343] ">
-            <li className="my-[.5vh]">
-              -PETShampoo All Purpose- Shampoo hipoalergénico
-            </li>
-            <li className="my-[.5vh]">-John Paul Pet Oatmeal Shampoo</li>
-            <li className="my-[.5vh]">-SEASKY Cepillo para Perros</li>
-          </ul>
-        </div>
-      </div>
-      <div className="h-[30%] w-[100%]">
-        <h2 className="text-[#6ED4A5] text-[2vh]">Accesorios</h2>
-        <ul>
-          <li className="my-[1vh]">NEWKIBOU Cueva Suave Gato</li>
-          <li className="my-[1vh]">Mini Pig - Arnés ajustable para cerditos</li>
-          <li className="my-[1vh]">
-            PUBAMALL Juego de 10 Piezas de Juguetes para Perros
-          </li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-export const Listaenfermadesporedad = () => {
-  return (
-    <div className="h-full w-full p-1 ">
-      <div className="h-20% text-[#6ED4A5] text-[2vh]">
-        Enfermedades mas comnues en perros
-      </div>
-
-      <div className="flex">
-        <div className="h-[70%] w-[50%]">
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">0 a 3 años</h2>
-            <ul>
-              <li className="my-[.5vh]">Rabia</li>
-              <li className="my-[.5vh]">Moquillo</li>
-              <li className="my-[.5vh]">Otitis</li>
+      <div className="h-[10%] w-full flex justify-center items-center text-[#555555] text-[2.5vh]">{title}</div>
+      <div className="grid grid-cols-2 grid-flow-row-3 gap-2 text-[2vh] text-center ">
+        {data.map((el) => (
+          <div className="w-[90%] mx-[5%]">
+            <h2 className="text-black text-[2vh] font-black flex items-center justify-center">
+              {el.sectionTitle}
+            </h2>
+            <ul className="text-[#434343]">
+              {el.sectionElements.map((sec=>(
+                <li className="my-[.5vh] text-left text-[.8rem] ">- {sec}</li>
+              )))}
             </ul>
           </div>
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">3 a 6 años</h2>
-            <ul>
-              <li className="my-[.5vh]">Parvovirus</li>
-              <li className="my-[.5vh]">Brucelosis</li>
-              <li className="my-[.5vh]">Alergias cutáneas</li>
-            </ul>
-          </div>
-        </div>
-        <div className="h-[70%] w-[50%]">
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">6 a 9 años</h2>
-            <ul>
-              <li className="my-[.5vh]">Diarrea</li>
-              <li className="my-[.5vh]">Leishmaniosis</li>
-              <li className="my-[.5vh]">Sarna demodéctica</li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh] my-[1vh]">9 a 12 años</h2>
-            <ul>
-              <li className="my-[.5vh]">Brucelosis</li>
-              <li className="my-[.5vh]">Parvovirus</li>
-              <li className="my-[.5vh]">Leptospirosis</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="h-[20%] w-[100%]">
-        <h2 className="text-[#6ED4A5] text-[2vh]">12 a 15 años</h2>
-        <ul>
-          <li className="my-[.5vh]">Hepatitis canina</li>
-          <li className="my-[.5vh]">Toxoplasmosis</li>
-          <li className="my-[.5vh]">Leishmaniosis</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-export const Listaenfermedadesporespecie = ({}) => {
-  return (
-    <div className="h-full w-full p-1 ">
-      <div className="h-20% text-[#6ED4A5] text-[2vh]">
-        Enfermedades mas comunes por especie
-      </div>
-
-      <div className="flex">
-        <div className="h-[70%] w-[50%]">
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">Perros</h2>
-            <ul>
-              <li className="my-[.5vh]">MOQUILLO CANINO</li>
-              <li className="my-[.5vh]">LEPTOSPIROSIS CANINA</li>
-              <li className="my-[.5vh]">TOS DE LAS PERRERAS</li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">Gatos</h2>
-            <ul>
-              <li className="my-[.5vh]">Rabia</li>
-              <li className="my-[.5vh]">Cistitis </li>
-              <li className="my-[.5vh]">Virus de la leucemia felina</li>
-            </ul>
-          </div>
-        </div>
-        <div className="h-[70%] w-[50%]">
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">Mini Pigs</h2>
-            <ul>
-              <li className="my-[.5vh]">Hemorroides</li>
-              <li className="my-[.5vh]">Bronquitis</li>
-              <li className="my-[.5vh]">Lombrices</li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh] my-[1vh]">Hurones</h2>
-            <ul>
-              <li className="my-[.5vh]">Sarna ótica</li>
-              <li className="my-[.5vh]">Cardiomipatía</li>
-              <li className="my-[.5vh]">Rabia</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="h-[20%] w-[100%]">
-        <h2 className="text-[#6ED4A5] text-[2vh]">Conejos</h2>
-        <ul>
-          <li className="my-[.5vh]">Mixomatosis</li>
-          <li className="my-[.5vh]">Neumonía</li>
-          <li className="my-[.5vh]">Abscesos generalizados</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-export const Listavacunasporespecie = ({}) => {
-  return (
-    <div className="h-full w-full p-1 ">
-      <div className="h-20% text-[#6ED4A5] text-[2vh]">
-        Vacunas mas comunes por especie
-      </div>
-
-      <div className="flex">
-        <div className="h-[70%] w-[50%]">
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">Perros</h2>
-            <ul>
-              <li className="my-[.5vh]">Vacuna contra el distemper</li>
-              <li className="my-[.5vh]">Vacuna contra la leptospirosis</li>
-              <li className="my-[.5vh]">Vacuna contra parvovirus</li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">Gatos</h2>
-            <ul>
-              <li className="my-[.5vh]">Vacuna contra Rabia</li>
-              <li className="my-[.5vh]">Vacuna contra Moquillo </li>
-              <li className="my-[.5vh]">Vacuna contra Gripe felina</li>
-            </ul>
-          </div>
-        </div>
-        <div className="h-[70%] w-[50%]">
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">Mini Pigs</h2>
-            <ul>
-              <li className="my-[.5vh]">
-                Vacuna contra Enfermedad de Aujeszky
-              </li>
-              <li className="my-[.5vh]">Vacuna contra porcina africana</li>
-              <li className="my-[.5vh]">Vacuna contra enfermedad vesiculars</li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh] my-[1vh]">Hurones</h2>
-            <ul>
-              <li className="my-[.5vh]">Vacuna contra Rabia</li>
-              <li className="my-[.5vh]">Vacuna contra moquillo</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="h-[20%] w-[100%]">
-        <h2 className="text-[#6ED4A5] text-[2vh]">Conejos</h2>
-        <ul>
-          <li className="my-[.5vh]">Vacuna contra vírica hemorrágica</li>
-          <li className="my-[.5vh]">Vacuna contra mixomatosis</li>
-          <li className="my-[.5vh]">Vacuna contra Rabia</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-export const Listadeproductospormarca = ({}) => {
-  return (
-    <div className="h-full w-full p-1 ">
-      <div className="h-20% text-[#6ED4A5] text-[2vh]">
-        Productos mas vendidos en cada marca
-      </div>
-
-      <div className="flex">
-        <div className="h-[70%] w-[50%]">
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">Purina</h2>
-            <ul>
-              <li className="my-[.5vh]">Purina® Beneful® Purina® Beneful®</li>
-              <li className="my-[.5vh]">Purina® Bonelo® Purina® Bonelo®</li>
-              <li className="my-[.5vh]">Purina® Cat Chow® Purina® Cat Chow®</li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">Zoetis</h2>
-            <ul>
-              <li className="my-[.5vh]">Simparica Trio</li>
-              <li className="my-[.5vh]">Draxxin KP</li>
-              <li className="my-[.5vh]">Vetscan</li>
-            </ul>
-          </div>
-        </div>
-        <div className="h-[70%] w-[50%]">
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh]">Elanco</h2>
-            <ul>
-              <li className="my-[.5vh]">Advantage</li>
-              <li className="my-[.5vh]">Advantage Multi</li>
-              <li className="my-[.5vh]">Advantix</li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[#6ED4A5] text-[2vh] my-[1vh]">Virbac</h2>
-            <ul>
-              <li className="my-[.5vh]">Acatak</li>
-              <li className="my-[.5vh]">Alfadex</li>
-              <li className="my-[.5vh]">Allermyl</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="h-[20%] w-[100%]">
-        <h2 className="text-[#6ED4A5] text-[2vh]">Hipra</h2>
-        <ul>
-          <li className="my-[.5vh]">Evanovo</li>
-          <li className="my-[.5vh]">Gumbohatch</li>
-          <li className="my-[.5vh]">Eravac</li>
-        </ul>
+        ))}
       </div>
     </div>
   );
@@ -363,9 +157,9 @@ export const DataEstadistic = ({
   return (
     <button
       onClick={click}
-      className="outline-none m-[none] py-[1vh] bg-[transparent] border-none cursor-pointer"
+      className="outline-none bg-[transparent] border-none cursor-pointer w-[90%] h-[45vh] mx-[5%] my-[2vh] col-span-1 relative bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center items-center"
     >
-      <div className="w-[35vw] h-[45vh] py-[1vh] px-[.5vw] bg-[#d9d9d9] rounded-1/7 flex flex-col">
+      <div className="w-full h-full py-[1vh] px-[.5vw] bg-[#d9d9d9] rounded-1/7 flex flex-col">
         {children ? (
           children
         ) : (
