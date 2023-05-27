@@ -5,22 +5,20 @@ import { RxTriangleDown } from "react-icons/rx";
 import { HiOutlineFilter } from "react-icons/hi";
 import {
   Graph,
+  ListThings,
   DataEstadistic,
   TotalDatesGraph,
   GraphDays,
-  GraphUsuDate,
   GraphEspecies,
+  EspecieSelect,
+  GraphUsuDate,
   GraphEdad,
   GraphMarcasPop,
   GraphVacunacion,
   GraphEnfermedades,
-  EspecieSelect,
-  Listcategorias,
-  Listaenfermadesporedad,
-  Listavacunasporespecie,
-  Listaenfermedadesporespecie,
-  Listadeproductospormarca,
 } from "./componetsdates";
+import { useMainStore } from "../../store";
+import { getAllEspecies, getAllVets } from "../../services";
 
 const MODES = {
   Citas: "Citas",
@@ -37,6 +35,34 @@ const DatesDash = () => {
 
   //Gráfica Cantidad de citas po usuario
   const [selectedMode, setSelectedMode] = useState();
+
+  const [veterinarias, setVeterinarias] = useState([]);
+
+  const veterinariaSelected = useMainStore((state) => state.veterinaria);
+  const setVeterinariaSelected = useMainStore((state) => state.setVeterinaria);
+
+  const setEspecies = useMainStore((state) => state.setEspecies);
+
+  useEffect(() => {
+    async function fetchAllSpecies() {
+      const data = await getAllEspecies();
+      if (data) {
+        setEspecies(data.especie);
+        console.log(data.especie);
+      }
+    }
+    async function fetchAllVets() {
+      const vets = await getAllVets();
+      console.log(vets);
+      if (!vets) {
+        setVeterinariaSelected({});
+        return setVeterinarias([]);
+      }
+      setVeterinarias(vets.veterinaria);
+    }
+    fetchAllVets();
+    fetchAllSpecies();
+  }, []);
 
   // const setTypeFactory = useCallback((type) => {}, []);
   useEffect(() => {
@@ -120,7 +146,9 @@ const DatesDash = () => {
                     }}
                   >
                     <p className="text-[#757474] mx-3 text-[2vh]">
-                      Veterinaria 1
+                      {veterinariaSelected && veterinariaSelected.nombre_vet
+                        ? veterinariaSelected.nombre_vet
+                        : "Veterinaria"}
                     </p>
                     <RxTriangleDown />
                   </button>
@@ -131,22 +159,18 @@ const DatesDash = () => {
                         : "absolute opacity-0 w-0 h-0"
                     }
                   >
-                    <button
-                      className="flex items-center justify-center float-left border-[.5vh] border-green w-full h-[6vh] rounded-[1vw] my-[.5vh] text-[2vh] text-[#757474] bg-white z-50"
-                      onClick={() => {
-                        setVetSelect(false);
-                      }}
-                    >
-                      Veterninaria 1
-                    </button>
-                    <button
-                      className="flex items-center justify-center float-left border-[.5vh] border-green w-full h-[6vh] rounded-[1vw] my-[.5vh] text-[2vh] text-[#757474] bg-white z-50"
-                      onClick={() => {
-                        setVetSelect(false);
-                      }}
-                    >
-                      Veterninaria 2
-                    </button>
+                    {veterinarias.map((vet) => (
+                      <button
+                        key={vet.id_vet}
+                        className="flex items-center justify-center float-left border-[.5vh] border-green w-full h-[6vh] rounded-[1vw] my-[.5vh] text-[2vh] text-[#757474] bg-white z-50"
+                        onClick={() => {
+                          setVetSelect(false);
+                          setVeterinariaSelected(vet);
+                        }}
+                      >
+                        {vet.nombre_vet}
+                      </button>
+                    ))}
                   </div>
                 </div>
                 <div className="h-[100%] w-[50%] flex items-center relative justify-end">
@@ -213,194 +237,183 @@ const DatesDash = () => {
                 </div>
               </div>
               <div className="grid grid-cols-2 overflow-y-scroll w-full h-[85%] bg-[#fff] ">
-                    {Graph1 ? (
-                      <DataEstadistic
-                        Type={"Citas"}
-                        SubX={"Media de citas por dia"}
-                        Media={129}
-                        SubMd={"Mediana de citas por dia"}
-                        Mediana={1234}
-                        SubMo={"Moda de citas por dia"}
-                        Moda={2344}
-                        click={() => {
-                          setGraph1(false);
-                        }}
-                      />
-                    ) : (
-                      <Graph
-                        Name={"Cantidad de citas por dia del mes"}
-                        Graph={<GraphDays />}
-                        click={() => {
-                          setGraph1(true);
-                        }}
-                        data={true}
-                      />
-                    )}
-                  
-                 
-                    <Graph
-                      Name={"Citas totales"}
-                      Graph={<TotalDatesGraph />}
-                      click={() => {
-                        setGraph2(true);
-                      }}
-                      data={false}
-                    />
-                  {
-                    Graph3 ? (
-                      <DataEstadistic
-                        Type={"Citas"}
-                        SubX={"Media de citas por usuario"}
-                        Media={129}
-                        SubMd={"Mediana de citas por usuario"}
-                        Mediana={1234}
-                        SubMo={"Moda de citas por usuario"}
-                        Moda={2344}
-                        children={<Listcategorias />}
-                        click={() => {
-                          setGraph3(false);
-                        }}
-                      />
-                    ) : (
-                      <Graph
-                        Name={"Productos mas usados en citas"}
-                        Graph={<GraphUsuDate />}
-                        click={() => {
-                          setGraph3(true);
-                        }}
-                        data={false}
-                      />
-                    )
-                  }
-                  {
-                    Graph4 ? (
-                      <DataEstadistic
-                        Type={""}
-                        SubX={"Media de animales registrados"}
-                        Media={129}
-                        SubMd={"Mediana de animales registrados"}
-                        Mediana={1234}
-                        SubMo={"Moda de animales registrados"}
-                        Moda={2344}
-                        click={() => {
-                          setGraph4(false);
-                        }}
-                      />
-                    ) : (
-                      <Graph
-                        Name={"Cantidad de animales"}
-                        Graph={<GraphEspecies />}
-                        click={() => {
-                          setGraph4(true);
-                        }}
-                        data={false}
-                      />
-                    )
-                  }
-{
-                    Graph5 ? (
-                      <DataEstadistic
-                        Type={"Años"}
-                        SubX={"Media de años"}
-                        Media={129}
-                        SubMd={"Mediana de años"}
-                        Mediana={1234}
-                        SubMo={"Moda de años"}
-                        Moda={2344}
-                        children={<Listaenfermadesporedad />}
-                        click={() => {
-                          setGraph5(false);
-                        }}
-                      />
-                    ) : (
-                      <Graph
-                        Name={"Edad de las mascotas por especie"}
-                        Graph={<GraphEdad />}
-                        click={() => {
-                          setGraph5(true);
-                        }}
-                        data={true}
-                      />
-                    )
-                  }
-                    {
-                    Graph6 ? (
-                      <DataEstadistic
-                        Type={"Vacunas"}
-                        SubX={"Media de vacunas"}
-                        Media={129}
-                        SubMd={"Mediana de vacunas"}
-                        Mediana={1234}
-                        SubMo={"Moda de vacunas"}
-                        Moda={2344}
-                        children={<Listavacunasporespecie />}
-                        click={() => {
-                          setGraph6(false);
-                        }}
-                      />
-                    ) : (
-                      <Graph
-                        Name={"Vacunas aplicadas por especie"}
-                        Graph={<GraphVacunacion />}
-                        click={() => {
-                          setGraph6(true);
-                        }}
-                        data={true}
-                      />
-                    )
-                  }
-{
-                    Graph7 ? (
-                      <DataEstadistic
-                        Type={"Enfermedades"}
-                        SubX={"Media de enfermedades"}
-                        Media={129}
-                        SubMd={"Mediana de enfermedades"}
-                        Mediana={1234}
-                        SubMo={"Moda de enfermedades"}
-                        Moda={2344}
-                        children={<Listaenfermedadesporespecie />}
-                        click={() => {
-                          setGraph7(false);
-                        }}
-                      />
-                    ) : (
-                      <Graph
-                        Name={"Enfermades mas comuenes por especie"}
-                        Graph={<GraphEnfermedades />}
-                        click={() => {
-                          setGraph7(true);
-                        }}
-                        data={true}
-                      />
-                    )
-                  }
-{
-                    Graph8 ? (
-                      <DataEstadistic
-                        Type={"Mascotas"}
-                        SubX={"Media de mascotas"}
-                        Media={129}
-                        SubMd={"Mediana de mascotas"}
-                        Mediana={1234}
-                        SubMo={"Moda de mascotas"}
-                        Moda={2344}
-                        children={<Listadeproductospormarca />}
-                        click={() => {
-                          setGraph8(false);
-                        }}
-                      />
-                    ) : (
-                      <Graph
-                        Name={"Marcas mas consumidas por especies"}
-                        Graph={<GraphMarcasPop />}
-                        click={() => {
-                          setGraph8(true);
-                        }}
-                        data={true}
-                      />
-                    )
-                  }
+                {Graph1 ? (
+                  <DataEstadistic
+                    Type={"Citas"}
+                    SubX={"Media de citas por dia"}
+                    Media={129}
+                    SubMd={"Mediana de citas por dia"}
+                    Mediana={1234}
+                    SubMo={"Moda de citas por dia"}
+                    Moda={2344}
+                    click={() => {
+                      setGraph1(false);
+                    }}
+                  />
+                ) : (
+                  <Graph
+                    Name={"Cantidad de citas por dia del mes"}
+                    Graph={<GraphDays />}
+                    click={() => {
+                      setGraph1(true);
+                    }}
+                    data={true}
+                  />
+                )}
+
+                <Graph
+                  Name={"Citas totales"}
+                  Graph={<TotalDatesGraph />}
+                  click={() => {
+                    setGraph2(true);
+                  }}
+                  data={false}
+                />
+                {Graph3 ? (
+                  <DataEstadistic
+                    Type={"Citas"}
+                    SubX={"Media de citas por usuario"}
+                    Media={129}
+                    SubMd={"Mediana de citas por usuario"}
+                    Mediana={1234}
+                    SubMo={"Moda de citas por usuario"}
+                    Moda={2344}
+                    children={<ListThings />}
+                    click={() => {
+                      setGraph3(false);
+                    }}
+                  />
+                ) : (
+                  <Graph
+                    Name={"Productos mas usados en citas"}
+                    Graph={<GraphUsuDate />}
+                    click={() => {
+                      setGraph3(true);
+                    }}
+                    data={false}
+                  />
+                )}
+                {Graph4 ? (
+                  <DataEstadistic
+                    Type={""}
+                    SubX={"Media de animales registrados"}
+                    Media={129}
+                    SubMd={"Mediana de animales registrados"}
+                    Mediana={1234}
+                    SubMo={"Moda de animales registrados"}
+                    Moda={2344}
+                    click={() => {
+                      setGraph4(false);
+                    }}
+                  />
+                ) : (
+                  <Graph
+                    Name={"Cantidad de animales"}
+                    Graph={<GraphEspecies />}
+                    click={() => {
+                      setGraph4(true);
+                    }}
+                    data={false}
+                  />
+                )}
+                {Graph5 ? (
+                  <DataEstadistic
+                    Type={"Años"}
+                    SubX={"Media de años"}
+                    Media={129}
+                    SubMd={"Mediana de años"}
+                    Mediana={1234}
+                    SubMo={"Moda de años"}
+                    Moda={2344}
+                    children={<ListThings />}
+                    click={() => {
+                      setGraph5(false);
+                    }}
+                  />
+                ) : (
+                  <Graph
+                    Name={"Edad de las mascotas por especie"}
+                    Graph={<GraphEdad />}
+                    click={() => {
+                      setGraph5(true);
+                    }}
+                    data={true}
+                  />
+                )}
+                {Graph6 ? (
+                  <DataEstadistic
+                    Type={"Vacunas"}
+                    SubX={"Media de vacunas"}
+                    Media={129}
+                    SubMd={"Mediana de vacunas"}
+                    Mediana={1234}
+                    SubMo={"Moda de vacunas"}
+                    Moda={2344}
+                    children={
+                      <ListThings title={"Vacunas aplicadas por especie"} />
+                    }
+                    click={() => {
+                      setGraph6(false);
+                    }}
+                  />
+                ) : (
+                  <Graph
+                    Name={"Vacunas aplicadas por especie"}
+                    Graph={<GraphVacunacion />}
+                    click={() => {
+                      setGraph6(true);
+                    }}
+                    data={true}
+                  />
+                )}
+                {Graph7 ? (
+                  <DataEstadistic
+                    Type={"Enfermedades"}
+                    SubX={"Media de enfermedades"}
+                    Media={129}
+                    SubMd={"Mediana de enfermedades"}
+                    Mediana={1234}
+                    SubMo={"Moda de enfermedades"}
+                    Moda={2344}
+                    children={<ListThings />}
+                    click={() => {
+                      setGraph7(false);
+                    }}
+                  />
+                ) : (
+                  <Graph
+                    Name={"Enfermades mas comuenes por especie"}
+                    Graph={<GraphEnfermedades />}
+                    click={() => {
+                      setGraph7(true);
+                    }}
+                    data={true}
+                  />
+                )}
+                {Graph8 ? (
+                  <DataEstadistic
+                    Type={"Mascotas"}
+                    SubX={"Media de mascotas"}
+                    Media={129}
+                    SubMd={"Mediana de mascotas"}
+                    Mediana={1234}
+                    SubMo={"Moda de mascotas"}
+                    Moda={2344}
+                    children={<ListThings />}
+                    click={() => {
+                      setGraph8(false);
+                    }}
+                  />
+                ) : (
+                  <Graph
+                    Name={"Marcas mas consumidas por especies"}
+                    Graph={<GraphMarcasPop />}
+                    click={() => {
+                      setGraph8(true);
+                    }}
+                    data={true}
+                  />
+                )}
               </div>
             </div>
           </div>
