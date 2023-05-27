@@ -2,22 +2,22 @@ import { RxTriangleDown } from "react-icons/rx";
 
 export const Graph = ({ Name, Graph, click, data }) => {
   return (
-      <div className="w-[90%] h-[45vh] mx-[5%] my-[2vh] col-span-1 relative bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center items-center">
-        <div className="relative flex items-center justify-center w-full">
-          <p className="text-[2vh] text-[#757474] my-[1vh] ">{Name}</p>
-          {data ? (
-            <button
-              className="bg-green outline-none y-[100%] w-[10vh] left-[55vh] rounded-[1vw] absolute text-white"
-              onClick={click}
-            >
-              Datos
-            </button>
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="h-[40vh] flex justify-center z-0">{Graph}</div>
+    <div className="w-[90%] h-[45vh] mx-[5%] my-[2vh] col-span-1 relative bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center items-center">
+      <div className="relative flex items-center justify-center w-full">
+        <p className="text-[2vh] text-[#757474] my-[1vh] ">{Name}</p>
+        {data ? (
+          <button
+            className="bg-green outline-none y-[100%] w-[10vh] left-[55vh] rounded-[1vw] absolute text-white"
+            onClick={click}
+          >
+            Datos
+          </button>
+        ) : (
+          ""
+        )}
       </div>
+      <div className="h-[40vh] flex justify-center z-0">{Graph}</div>
+    </div>
   );
 };
 export const EspecieSelect = ({}) => {
@@ -820,7 +820,9 @@ export const SwitchButton = () => {
             aria-haspopup="true"
             aria-expanded={isExpanded}
           >
-            {selectedOption ? selectedOption : "Especie"}
+            {selectedOption && selectedOption !== ""
+              ? selectedOption
+              : "Especie sasadas"}
             <svg
               className="-mr-1 ml-2 h-5 w-5"
               viewBox="0 0 20 20"
