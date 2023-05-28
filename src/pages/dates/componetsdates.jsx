@@ -4,7 +4,9 @@ export const Graph = ({ Name, Graph, click, data }) => {
   return (
     <div className="w-[90%] h-[45vh] mx-[5%] my-[2vh] col-span-1 relative bg-[#d9d9d9] rounded-1/7 flex-col flex justify-center items-center">
       <div className="relative flex items-center justify-center w-full">
-        <p className="text-[2.5vh] text-[#757474] font-bold my-[1vh] ">{Name}</p>
+        <p className="text-[2.5vh] text-[#757474] font-bold my-[1vh] ">
+          {Name}
+        </p>
         {data ? (
           <button
             className="bg-green outline-none y-[100%] w-[10vh] left-[37vw] top-[1vh] rounded-[1vw] absolute text-white"
@@ -102,10 +104,7 @@ const EXAMPLE = [
   },
   {
     sectionTitle: "Alimento",
-    sectionElements: [
-      "Trick & Treats YUMPERS",
-      "Trick & Treats YUMPERS",
-    ],
+    sectionElements: ["Trick & Treats YUMPERS", "Trick & Treats YUMPERS"],
   },
   {
     sectionTitle: "Alimento",
@@ -125,7 +124,9 @@ const EXAMPLE = [
 export const ListThings = ({ title, data = EXAMPLE }) => {
   return (
     <div className="h-full w-full p-1">
-      <div className="h-[10%] w-full flex justify-center items-center text-[#555555] text-[2.5vh]">{title}</div>
+      <div className="h-[10%] w-full flex justify-center items-center text-[#555555] text-[2.5vh]">
+        {title}
+      </div>
       <div className="grid grid-cols-2 grid-flow-row-3 gap-2 text-[2vh] text-center ">
         {data.map((el) => (
           <div className="w-[90%] mx-[5%]">
@@ -133,9 +134,9 @@ export const ListThings = ({ title, data = EXAMPLE }) => {
               {el.sectionTitle}
             </h2>
             <ul className="text-[#434343]">
-              {el.sectionElements.map((sec=>(
+              {el.sectionElements.map((sec) => (
                 <li className="my-[.5vh] text-left text-[.8rem] ">- {sec}</li>
-              )))}
+              ))}
             </ul>
           </div>
         ))}
@@ -238,10 +239,11 @@ export const GraphDays = () => {
     stroke: {
       curve: "straight",
     },
+    colors: ["#6ED4A5"],
     grid: {
       row: {
-        colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-        opacity: 0.5,
+        colors: ["#6ED4A5", "transparent"], // takes an array which will be repeated on columns
+        opacity: 0.1,
       },
     },
     xaxis: {
@@ -287,9 +289,11 @@ export const TotalDatesGraph = () => {
 
     grid: {
       row: {
-        colors: ["#fff", "#f2f2f2"],
+        colors: ["#6ED4A5", "transparent"], // takes an array which will be repeated on columns
+        opacity: 0.1,
       },
     },
+    colors: ["#6ED4A5"],
     xaxis: {
       labels: {
         rotate: -45,
@@ -338,6 +342,7 @@ export const GraphUsuDate = () => {
       bar: {
         columnWidth: "45%",
         distributed: true,
+        borderRadius: 10, // Ajusta el valor para obtener bordes más o menos redondeados
       },
     },
     dataLabels: {
@@ -346,6 +351,7 @@ export const GraphUsuDate = () => {
     legend: {
       show: false,
     },
+    colors: ["#6ED4A5", "#5CCBA0", "#4AB291"],
     xaxis: {
       categories: [["Alimento"], ["Higiene"], ["Accesorios"]],
       labels: {
@@ -383,9 +389,10 @@ export const GraphEspecies = () => {
         },
       },
     ],
+    colors: ["#6ED4A5", "#5CCBA0", "#4AB991", "#3AA972", "#2A9B73"],
   };
   return (
-    <div className="w-[27vw]">
+    <div className="w-[25vw]">
       <Chart type="pie" series={series} options={options} />
     </div>
   );
@@ -426,6 +433,7 @@ export const GraphEdad = () => {
     theme: {
       monochrome: {
         enabled: true,
+        color: "#78CC9F",
         shadeTo: "light",
         shadeIntensity: 0.6,
       },
@@ -470,6 +478,7 @@ export const GraphVacunacion = () => {
       },
     },
     labels: ["Perros", "Gatos", "Hurones", "Conejos", "Mini Pigs"],
+    colors: ["#3FA168", "#6AB94E", "#8BC133", "#6FFF50", "#93FF90"],
   };
 
   return (
@@ -515,6 +524,7 @@ export const GraphEnfermedades = () => {
     theme: {
       monochrome: {
         enabled: true,
+        color: "#78CC9F",
         shadeTo: "light",
         shadeIntensity: 0.6,
       },
@@ -522,7 +532,7 @@ export const GraphEnfermedades = () => {
   };
 
   return (
-    <div className="w-[25vw]">
+    <div className="w-[23vw]">
       <Chart options={options} series={series} type="donut" />
     </div>
   );
@@ -557,6 +567,7 @@ export const GraphMarcasPop = () => {
     legend: {
       show: false,
     },
+    colors: ["#78CC9F", "#64C894", "#51C289", "#3DBA7E", "#29B472"],
     xaxis: {
       categories: [
         ["Pedigree"],
@@ -573,7 +584,7 @@ export const GraphMarcasPop = () => {
     },
   };
   return (
-    <div className="w-[28vw]">
+    <div className="w-[25vw]">
       <div className="flex justify-start items-center">
         <EspecieSelect />
       </div>
